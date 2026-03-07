@@ -1,0 +1,90 @@
+      {/* Testimonials */}
+      <section className="py-20 bg-[#C41E3A] relative overflow-hidden">
+        {/* Pattern Background */}
+        <div className="absolute inset-0 opacity-10">
+          <svg width="100%" height="100%">
+            <defs>
+              <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                <circle cx="20" cy="20" r="2" fill="white" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#dots)" />
+          </svg>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Side - Stacked Testimonials */}
+            <div className="relative h-[500px]">
+              {[
+                { name: "Jean Mugisha", role: "Property Investor", content: "Excellent service and professionalism throughout the process. The team went above and beyond to ensure I found the perfect investment property." },
+                { name: "Grace Uwimana", role: "Homeowner", content: "Made my first home buying experience smooth and stress-free. I couldn't have asked for better guidance and support." },
+                { name: "Patrick Niyonzima", role: "Commercial Client", content: "Deep understanding of commercial real estate needs. Their expertise helped me secure an excellent location for my business." },
+                { name: "Marie Kamanzi", role: "Villa Owner", content: "Professional, reliable, and trustworthy. They made the entire process seamless from start to finish." },
+                { name: "David Habimana", role: "Investor", content: "Outstanding market knowledge and exceptional customer service. Highly recommend their services to anyone." }
+              ].map((testimonial, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="absolute bg-white p-6 rounded-xl shadow-2xl"
+                  style={{
+                    top: `${index * 80}px`,
+                    left: `${index * 20}px`,
+                    width: 'calc(100% - ' + (index * 20) + 'px)',
+                    zIndex: 5 - index,
+                    transform: `rotate(${index * -2}deg)`
+                  }}
+                >
+                  <div className="flex mb-3">
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i} className="text-[#C41E3A] text-lg">★</span>
+                    ))}
+                  </div>
+                  <p className="text-gray-700 mb-4 italic text-sm">"{testimonial.content}"</p>
+                  <div>
+                    <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
+                    <p className="text-sm text-gray-600">{testimonial.role}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Right Side - Title */}
+            <div className="text-white">
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="text-5xl font-bold mb-6">What Our Clients Say</h2>
+                <p className="text-xl text-white/90 mb-8">
+                  Trusted by hundreds of satisfied clients across Rwanda. Their success stories speak for our commitment to excellence.
+                </p>
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                      <Users className="w-8 h-8 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold">500+</h3>
+                      <p className="text-white/80">Happy Clients</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                      <Star className="w-8 h-8 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold">4.9/5</h3>
+                      <p className="text-white/80">Average Rating</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
