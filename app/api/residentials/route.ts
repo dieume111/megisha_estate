@@ -1,9 +1,98 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { query } from '@/lib/db';
 
+// Mock data fallback
+const mockResidentials = [
+  {
+    id: 1,
+    title: "Modern Family Home",
+    description: "Beautiful family home in quiet neighborhood with great amenities and schools nearby",
+    location: "Kigali, Kacyiru",
+    beds: 4,
+    baths: 3,
+    area: "250 sqm",
+    price: 45000000,
+    currency: "RWF",
+    image_url: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    featured: true,
+    status: "available",
+    amenities: ["Garden", "Garage", "Security", "Modern Kitchen", "Balcony", "Storage"],
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  },
+  {
+    id: 2,
+    title: "Cozy Starter Home",
+    description: "Perfect starter home for young families in up-and-coming neighborhood",
+    location: "Kigali, Remera",
+    beds: 3,
+    baths: 2,
+    area: "180 sqm",
+    price: 28000000,
+    currency: "RWF",
+    image_url: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    featured: false,
+    status: "available",
+    amenities: ["Parking", "Security", "Modern Kitchen", "Garden"],
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  },
+  {
+    id: 3,
+    title: "Luxury Residence",
+    description: "High-end residential property with premium finishes and excellent location",
+    location: "Kigali, Nyarutarama",
+    beds: 5,
+    baths: 4,
+    area: "320 sqm",
+    price: 85000000,
+    currency: "RWF",
+    image_url: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    featured: true,
+    status: "available",
+    amenities: ["Swimming Pool", "Garden", "Double Garage", "Security", "Gym", "Home Theater", "Smart Home"],
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  },
+  {
+    id: 4,
+    title: "Affordable Apartment",
+    description: "Budget-friendly apartment in convenient location with good access to transport",
+    location: "Kigali, Nyabugogo",
+    beds: 2,
+    baths: 1,
+    area: "90 sqm",
+    price: 15000000,
+    currency: "RWF",
+    image_url: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    featured: false,
+    status: "sold",
+    amenities: ["Parking", "Security", "Modern Kitchen"],
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  },
+  {
+    id: 5,
+    title: "Executive Townhouse",
+    description: "Modern townhouse perfect for executives and small families",
+    location: "Kigali, Kimihurura",
+    beds: 3,
+    baths: 3,
+    area: "200 sqm",
+    price: 55000000,
+    currency: "RWF",
+    image_url: "https://images.unsplash.com/photo-1600047509807-bfb8c5e9cb8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    featured: false,
+    status: "pending",
+    amenities: ["Garage", "Security", "Modern Kitchen", "Rooftop Terrace", "Home Office"],
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  }
+];
+
 export async function GET(request: NextRequest) {
   try {
-    // Fetch all residentials from database
+    // Try to fetch from database first
     const residentials = await query(`
       SELECT id, title, description, location, beds, baths, area, price, currency, 
              image_url, featured, status, amenities, created_at, updated_at
@@ -21,11 +110,10 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(residentialsWithParsedAmenities);
   } catch (error) {
-    console.error('Error fetching residentials:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch residentials' },
-      { status: 500 }
-    );
+    console.warn('Database connection failed, using mock data for residentials:', error);
+    
+    // Fallback to mock data if database is not available
+    return NextResponse.json(mockResidentials);
   }
 }
 

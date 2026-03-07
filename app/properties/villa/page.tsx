@@ -2,8 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { Home, MapPin, Bed, Bath, Square, DollarSign, Car, Trees, Shield } from 'lucide-react';
+import Image from 'next/image';
+import { memo } from 'react';
 
-export default function VillaPage() {
+function VillaPage() {
   const villas = [
     {
       id: 1,
@@ -57,10 +59,13 @@ export default function VillaPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden h-96">
         <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+          <Image
+            src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
             alt="Luxury Villas"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"></div>
         </div>
@@ -167,3 +172,5 @@ export default function VillaPage() {
     </div>
   );
 }
+
+export default memo(VillaPage);

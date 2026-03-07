@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import { MapPin, Home, DollarSign, Tag, CheckCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import { memo } from 'react';
 
 interface Plot {
   id: number;
@@ -20,7 +22,7 @@ interface Plot {
   updated_at: string;
 }
 
-export default function PlotsPage() {
+function PlotsPage() {
   const [plots, setPlots] = useState<Plot[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -124,10 +126,13 @@ export default function PlotsPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden h-96">
         <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+          <Image
+            src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
             alt="Land Plots"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"></div>
         </div>
@@ -192,10 +197,12 @@ export default function PlotsPage() {
                   className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500"
                 >
                   <div className="relative h-56">
-                    <img
+                    <Image
                       src={plot.image_url}
                       alt={plot.title}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     
@@ -264,3 +271,5 @@ export default function PlotsPage() {
     </div>
   );
 }
+
+export default memo(PlotsPage);
