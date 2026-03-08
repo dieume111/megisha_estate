@@ -14,6 +14,7 @@ function Navigation({ currentPage }: NavigationProps) {
   const [isSurveyingDropdownOpen, setIsSurveyingDropdownOpen] = useState(false);
   const [isMachineryDropdownOpen, setIsMachineryDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [propertyCounts, setPropertyCounts] = useState({ plots: 0, residentials: 0, villas: 0, commercial: 0, apartments: 0 });
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const surveyingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const machineryTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -27,6 +28,30 @@ function Navigation({ currentPage }: NavigationProps) {
     handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const fetchCounts = async () => {
+      try {
+        const [plots, residentials, villas, commercial, apartments] = await Promise.all([
+          fetch('/api/plots').then(r => r.json()),
+          fetch('/api/residentials').then(r => r.json()),
+          fetch('/api/villas').then(r => r.json()),
+          fetch('/api/commercial').then(r => r.json()),
+          fetch('/api/apartments').then(r => r.json())
+        ]);
+        setPropertyCounts({
+          plots: plots?.length || 0,
+          residentials: residentials?.length || 0,
+          villas: villas?.length || 0,
+          commercial: commercial?.length || 0,
+          apartments: apartments?.length || 0
+        });
+      } catch (err) {
+        console.error('Failed to fetch property counts:', err);
+      }
+    };
+    fetchCounts();
   }, []);
 
   const handleDropdownEnter = useCallback(() => {
@@ -67,16 +92,18 @@ function Navigation({ currentPage }: NavigationProps) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-24">
-          <motion.div className="flex items-center" whileHover={{ scale: 1.05 }}>
-            <div className={`w-12 h-12 rounded-lg flex items-center justify-center mr-3 shadow-lg transition-colors ${
-              isScrolled ? 'bg-[#C41E3A]' : 'bg-white/90'
-            }`}>
-              <Building className={`w-7 h-7 ${isScrolled ? 'text-white' : 'text-[#C41E3A]'}`} />
-            </div>
-            <h1 className={`text-2xl font-bold transition-colors ${
-              isScrolled ? 'text-[#C41E3A]' : 'text-white drop-shadow-lg'
-            }`}>Megisha Estate</h1>
-          </motion.div>
+          <a href="/">
+            <motion.div className="flex items-center" whileHover={{ scale: 1.05 }}>
+              <div className={`w-12 h-12 rounded-lg flex items-center justify-center mr-3 shadow-lg transition-colors ${
+                isScrolled ? 'bg-[#C41E3A]' : 'bg-white/90'
+              }`}>
+                <Building className={`w-7 h-7 ${isScrolled ? 'text-white' : 'text-[#C41E3A]'}`} />
+              </div>
+              <h1 className={`text-2xl font-bold transition-colors ${
+                isScrolled ? 'text-[#C41E3A]' : 'text-white drop-shadow-lg'
+              }`}>Megisha Estate</h1>
+            </motion.div>
+          </a>
 
           <div className="hidden lg:flex items-center space-x-8">
             <div className="relative">
@@ -102,11 +129,11 @@ function Navigation({ currentPage }: NavigationProps) {
                   style={{ display: isPropertiesDropdownOpen ? 'block' : 'none' }}
                 >
                   {[
-                    { name: 'Plot', href: '/properties/plots', count: '36' },
-                    { name: 'Residential', href: '/properties/residentials', count: '69' },
-                    { name: 'Villa', href: '/properties/villa', count: '22' },
-                    { name: 'Commercial', href: '/properties/commercial', count: '10' },
-                    { name: 'Apartment', href: '/properties/appartment', count: '41' }
+                    { name: 'Plot', href: '/properties/plots', count: propertyCounts.plots },
+                    { name: 'Residential', href: '/properties/residentials', count: propertyCounts.residentials },
+                    { name: 'Villa', href: '/properties/villa', count: propertyCounts.villas },
+                    { name: 'Commercial', href: '/properties/commercial', count: propertyCounts.commercial },
+                    { name: 'Apartment', href: '/properties/appartment', count: propertyCounts.apartments }
                   ].map((item) => (
                     <a key={item.name} href={item.href} className="block px-4 py-2 text-gray-700 hover:bg-[#FFF5F5] hover:text-[#C41E3A] transition-all">
                       <div className="flex items-center justify-between">
