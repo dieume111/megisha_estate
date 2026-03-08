@@ -1,17 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { 
-  Home, 
-  Building, 
-  ArrowRight,
-  Compass,
-  Ruler,
-  Store,
-  Menu,
-  X
-} from 'lucide-react';
-import { useState, useRef, memo, useCallback } from 'react';
+import { Home, Building, ArrowRight, Compass, Ruler, Store, Menu, X } from 'lucide-react';
+import { useState, useRef, memo, useCallback, useEffect } from 'react';
 
 interface NavigationProps {
   currentPage?: string;
@@ -22,53 +13,47 @@ function Navigation({ currentPage }: NavigationProps) {
   const [isPropertiesDropdownOpen, setIsPropertiesDropdownOpen] = useState(false);
   const [isSurveyingDropdownOpen, setIsSurveyingDropdownOpen] = useState(false);
   const [isMachineryDropdownOpen, setIsMachineryDropdownOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const surveyingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const machineryTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      setIsScrolled(scrollPosition > viewportHeight - 200);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleDropdownEnter = useCallback(() => {
-    if (dropdownTimeoutRef.current) {
-      clearTimeout(dropdownTimeoutRef.current);
-      dropdownTimeoutRef.current = null;
-    }
+    if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
     setIsPropertiesDropdownOpen(true);
   }, []);
 
   const handleDropdownLeave = useCallback(() => {
-    dropdownTimeoutRef.current = setTimeout(() => {
-      setIsPropertiesDropdownOpen(false);
-      dropdownTimeoutRef.current = null;
-    }, 300);
+    dropdownTimeoutRef.current = setTimeout(() => setIsPropertiesDropdownOpen(false), 300);
   }, []);
 
   const handleSurveyingEnter = useCallback(() => {
-    if (surveyingTimeoutRef.current) {
-      clearTimeout(surveyingTimeoutRef.current);
-      surveyingTimeoutRef.current = null;
-    }
+    if (surveyingTimeoutRef.current) clearTimeout(surveyingTimeoutRef.current);
     setIsSurveyingDropdownOpen(true);
   }, []);
 
   const handleSurveyingLeave = useCallback(() => {
-    surveyingTimeoutRef.current = setTimeout(() => {
-      setIsSurveyingDropdownOpen(false);
-      surveyingTimeoutRef.current = null;
-    }, 300);
+    surveyingTimeoutRef.current = setTimeout(() => setIsSurveyingDropdownOpen(false), 300);
   }, []);
 
   const handleMachineryEnter = useCallback(() => {
-    if (machineryTimeoutRef.current) {
-      clearTimeout(machineryTimeoutRef.current);
-      machineryTimeoutRef.current = null;
-    }
+    if (machineryTimeoutRef.current) clearTimeout(machineryTimeoutRef.current);
     setIsMachineryDropdownOpen(true);
   }, []);
 
   const handleMachineryLeave = useCallback(() => {
-    machineryTimeoutRef.current = setTimeout(() => {
-      setIsMachineryDropdownOpen(false);
-      machineryTimeoutRef.current = null;
-    }, 300);
+    machineryTimeoutRef.current = setTimeout(() => setIsMachineryDropdownOpen(false), 300);
   }, []);
 
   return (
@@ -76,318 +61,151 @@ function Navigation({ currentPage }: NavigationProps) {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="bg-[#365D77] shadow-xl sticky top-0 z-50"
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white shadow-lg border-b-2 border-[#C41E3A]' : 'bg-transparent'
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <motion.div 
-            className="flex items-center"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: 'spring', stiffness: 400 }}
-          >
-            <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center mr-3 shadow-lg">
-              <Building className="w-6 h-6 text-[#365D77]" />
+        <div className="flex justify-between items-center h-24">
+          <motion.div className="flex items-center" whileHover={{ scale: 1.05 }}>
+            <div className={`w-12 h-12 rounded-lg flex items-center justify-center mr-3 shadow-lg transition-colors ${
+              isScrolled ? 'bg-[#C41E3A]' : 'bg-white/90'
+            }`}>
+              <Building className={`w-7 h-7 ${isScrolled ? 'text-white' : 'text-[#C41E3A]'}`} />
             </div>
-            <h1 className="text-xl sm:text-2xl font-bold text-white">Megisha Estate</h1>
+            <h1 className={`text-2xl font-bold transition-colors ${
+              isScrolled ? 'text-[#C41E3A]' : 'text-white drop-shadow-lg'
+            }`}>Megisha Estate</h1>
           </motion.div>
 
-          {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            {/* Properties with Dropdown */}
             <div className="relative">
               <div className="hover-area" onMouseEnter={handleDropdownEnter} onMouseLeave={handleDropdownLeave}>
-                <motion.button
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center space-x-2 text-white hover:text-gray-300 transition-all duration-300 group"
-                >
-                  <motion.div
-                    className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ type: 'spring', stiffness: 200 }}
-                  >
-                    <Home className="w-4 h-4 text-white" />
-                  </motion.div>
-                  <span className="text-sm font-medium">Properties</span>
-                  <ArrowRight className="w-3 h-3 transition-transform duration-300" 
-                    style={{ transform: isPropertiesDropdownOpen ? 'rotate(90deg)' : 'rotate(0deg)' }} 
-                  />
+                <motion.button whileHover={{ scale: 1.05 }} className={`flex items-center space-x-2 transition-all group ${
+                  isScrolled ? 'text-gray-700 hover:text-[#C41E3A]' : 'text-white hover:text-gray-200'
+                }`}>
+                  <div className={`w-9 h-9 rounded-full flex items-center justify-center shadow transition-all ${
+                    isScrolled ? 'bg-gray-100 group-hover:bg-[#C41E3A]' : 'bg-white/20 group-hover:bg-white/30'
+                  }`}>
+                    <Home className={`w-5 h-5 ${isScrolled ? 'group-hover:text-white' : 'text-white'}`} />
+                  </div>
+                  <span className="font-medium">Properties</span>
+                  <ArrowRight className="w-3 h-3 transition-transform" style={{ transform: isPropertiesDropdownOpen ? 'rotate(90deg)' : 'rotate(0deg)' }} />
                 </motion.button>
 
-                {/* Dropdown Menu */}
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
-                  animate={{ 
-                    opacity: isPropertiesDropdownOpen ? 1 : 0,
-                    y: isPropertiesDropdownOpen ? 0 : -10
-                  }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute top-full left-0 mt-1 w-56 bg-[#2a4658] rounded-lg shadow-xl overflow-hidden z-50"
+                  animate={{ opacity: isPropertiesDropdownOpen ? 1 : 0, y: isPropertiesDropdownOpen ? 0 : -10 }}
+                  className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl overflow-hidden border border-gray-200"
                   onMouseEnter={handleDropdownEnter}
                   onMouseLeave={handleDropdownLeave}
                   style={{ display: isPropertiesDropdownOpen ? 'block' : 'none' }}
                 >
-                  <div className="py-1">
-                    {[
-                      { name: 'Plot', href: '/properties/plots', count: '36' },
-                      { name: 'Residential', href: '/properties/residentials', count: '69' },
-                      { name: 'Villa', href: '/properties/villa', count: '22' },
-                      { name: 'Commercial', href: '/properties/commercial', count: '10' },
-                      { name: 'Apartment', href: '/properties/appartment', count: '41' }
-                    ].map((item, index) => (
-                      <motion.a
-                        key={item.name}
-                        href={item.href}
-                        className="block px-4 py-2 text-white hover:bg-[#365D77] transition-all duration-200"
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.05 }}
-                        whileHover={{ scale: 1.02, x: 2 }}
-                      >
-                        <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium">{item.name}</span>
-                          <span className="text-xs text-gray-300">({item.count})</span>
-                        </div>
-                      </motion.a>
-                    ))}
-                  </div>
+                  {[
+                    { name: 'Plot', href: '/properties/plots', count: '36' },
+                    { name: 'Residential', href: '/properties/residentials', count: '69' },
+                    { name: 'Villa', href: '/properties/villa', count: '22' },
+                    { name: 'Commercial', href: '/properties/commercial', count: '10' },
+                    { name: 'Apartment', href: '/properties/appartment', count: '41' }
+                  ].map((item) => (
+                    <a key={item.name} href={item.href} className="block px-4 py-2 text-gray-700 hover:bg-[#FFF5F5] hover:text-[#C41E3A] transition-all">
+                      <div className="flex items-center justify-between">
+                        <span className="font-medium">{item.name}</span>
+                        <span className="text-xs text-gray-500">({item.count})</span>
+                      </div>
+                    </a>
+                  ))}
                 </motion.div>
               </div>
             </div>
 
-            {/* Surveying Services with Dropdown */}
             <div className="relative">
               <div className="hover-area" onMouseEnter={handleSurveyingEnter} onMouseLeave={handleSurveyingLeave}>
-                <motion.button
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center space-x-2 text-white hover:text-gray-300 transition-all duration-300 group"
-                >
-                  <motion.div
-                    className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ type: 'spring', stiffness: 200 }}
-                  >
-                    <Compass className="w-4 h-4 text-white" />
-                  </motion.div>
-                  <span className="text-sm font-medium">Surveying Services</span>
-                  <ArrowRight className="w-3 h-3 transition-transform duration-300" 
-                    style={{ transform: isSurveyingDropdownOpen ? 'rotate(90deg)' : 'rotate(0deg)' }} 
-                  />
+                <motion.button whileHover={{ scale: 1.05 }} className={`flex items-center space-x-2 transition-all group ${
+                  isScrolled ? 'text-gray-700 hover:text-[#C41E3A]' : 'text-white hover:text-gray-200'
+                }`}>
+                  <div className={`w-9 h-9 rounded-full flex items-center justify-center shadow transition-all ${
+                    isScrolled ? 'bg-gray-100 group-hover:bg-[#C41E3A]' : 'bg-white/20 group-hover:bg-white/30'
+                  }`}>
+                    <Compass className={`w-5 h-5 ${isScrolled ? 'group-hover:text-white' : 'text-white'}`} />
+                  </div>
+                  <span className="font-medium">Surveying Services</span>
+                  <ArrowRight className="w-3 h-3 transition-transform" style={{ transform: isSurveyingDropdownOpen ? 'rotate(90deg)' : 'rotate(0deg)' }} />
                 </motion.button>
 
-                {/* Surveying Dropdown Menu */}
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
-                  animate={{ 
-                    opacity: isSurveyingDropdownOpen ? 1 : 0,
-                    y: isSurveyingDropdownOpen ? 0 : -10
-                  }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute top-full left-0 mt-1 w-64 bg-[#2a4658] rounded-lg shadow-xl overflow-hidden z-50"
+                  animate={{ opacity: isSurveyingDropdownOpen ? 1 : 0, y: isSurveyingDropdownOpen ? 0 : -10 }}
+                  className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl overflow-hidden border border-gray-200"
                   onMouseEnter={handleSurveyingEnter}
                   onMouseLeave={handleSurveyingLeave}
                   style={{ display: isSurveyingDropdownOpen ? 'block' : 'none' }}
                 >
-                  <div className="py-1">
-                    {[
-                      { name: 'Mining Surveying', href: '/surveying-services/mining-surveying' },
-                      { name: 'Cadastral Surveying', href: '/surveying-services/cadastral-surveying' },
-                      { name: 'Topographic Surveying', href: '/surveying-services/topographic-surveying' },
-                      { name: 'Construction Surveying', href: '/surveying-services/construction-surveying' }
-                    ].map((item, index) => (
-                      <motion.a
-                        key={item.name}
-                        href={item.href}
-                        className="block px-4 py-2 text-white hover:bg-[#365D77] transition-all duration-200"
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.05 }}
-                        whileHover={{ scale: 1.02, x: 2 }}
-                      >
-                        <div className="text-sm font-medium">{item.name}</div>
-                      </motion.a>
-                    ))}
-                  </div>
+                  {[
+                    { name: 'Mining Surveying', href: '/surveying-services/mining-surveying' },
+                    { name: 'Cadastral Surveying', href: '/surveying-services/cadastral-surveying' },
+                    { name: 'Topographic Surveying', href: '/surveying-services/topographic-surveying' },
+                    { name: 'Construction Surveying', href: '/surveying-services/construction-surveying' }
+                  ].map((item) => (
+                    <a key={item.name} href={item.href} className="block px-4 py-2 text-gray-700 hover:bg-[#FFF5F5] hover:text-[#C41E3A] transition-all">
+                      <div className="font-medium">{item.name}</div>
+                    </a>
+                  ))}
                 </motion.div>
               </div>
             </div>
 
-            {/* Architectural Services */}
-            <motion.a
-              href="#"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center space-x-2 text-white hover:text-gray-300 transition-all duration-300 group"
-            >
-              <motion.div
-                className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300"
-                whileHover={{ scale: 1.1 }}
-                transition={{ type: 'spring', stiffness: 200 }}
-              >
-                <Ruler className="w-4 h-4 text-white" />
-              </motion.div>
-              <span className="text-sm font-medium">Architectural service</span>
+            <motion.a href="#" whileHover={{ scale: 1.05 }} className={`flex items-center space-x-2 transition-all group ${
+              isScrolled ? 'text-gray-700 hover:text-[#C41E3A]' : 'text-white hover:text-gray-200'
+            }`}>
+              <div className={`w-9 h-9 rounded-full flex items-center justify-center shadow transition-all ${
+                isScrolled ? 'bg-gray-100 group-hover:bg-[#C41E3A]' : 'bg-white/20 group-hover:bg-white/30'
+              }`}>
+                <Ruler className={`w-5 h-5 ${isScrolled ? 'group-hover:text-white' : 'text-white'}`} />
+              </div>
+              <span className="font-medium">Architectural service</span>
             </motion.a>
 
-            {/* Megisha Store with Dropdown */}
             <div className="relative">
               <div className="hover-area" onMouseEnter={handleMachineryEnter} onMouseLeave={handleMachineryLeave}>
-                <motion.button
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center space-x-2 text-white hover:text-gray-300 transition-all duration-300 group"
-                >
-                  <motion.div
-                    className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ type: 'spring', stiffness: 200 }}
-                  >
-                    <Store className="w-4 h-4 text-white" />
-                  </motion.div>
-                  <span className="text-sm font-medium">Megisha Store</span>
-                  <ArrowRight className="w-3 h-3 transition-transform duration-300" 
-                    style={{ transform: isMachineryDropdownOpen ? 'rotate(90deg)' : 'rotate(0deg)' }} 
-                  />
+                <motion.button whileHover={{ scale: 1.05 }} className={`flex items-center space-x-2 transition-all group ${
+                  isScrolled ? 'text-gray-700 hover:text-[#C41E3A]' : 'text-white hover:text-gray-200'
+                }`}>
+                  <div className={`w-9 h-9 rounded-full flex items-center justify-center shadow transition-all ${
+                    isScrolled ? 'bg-gray-100 group-hover:bg-[#C41E3A]' : 'bg-white/20 group-hover:bg-white/30'
+                  }`}>
+                    <Store className={`w-5 h-5 ${isScrolled ? 'group-hover:text-white' : 'text-white'}`} />
+                  </div>
+                  <span className="font-medium">Megisha Store</span>
+                  <ArrowRight className="w-3 h-3 transition-transform" style={{ transform: isMachineryDropdownOpen ? 'rotate(90deg)' : 'rotate(0deg)' }} />
                 </motion.button>
 
-                {/* Store Dropdown Menu */}
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
-                  animate={{ 
-                    opacity: isMachineryDropdownOpen ? 1 : 0,
-                    y: isMachineryDropdownOpen ? 0 : -10
-                  }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute top-full left-0 mt-1 w-64 bg-[#2a4658] rounded-lg shadow-xl overflow-hidden z-50"
+                  animate={{ opacity: isMachineryDropdownOpen ? 1 : 0, y: isMachineryDropdownOpen ? 0 : -10 }}
+                  className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl overflow-hidden border border-gray-200"
                   onMouseEnter={handleMachineryEnter}
                   onMouseLeave={handleMachineryLeave}
                   style={{ display: isMachineryDropdownOpen ? 'block' : 'none' }}
                 >
-                  <div className="py-1">
-                    {[
-                      { name: 'Electronic Machines', href: '/megisha-machinery-store/electronic-machines' },
-                      { name: 'Car Deals for sell', href: '/megisha-machinery-store/car-deals-for-sell' },
-                      { name: 'Car Deals for rent', href: '/megisha-machinery-store/car-deals-for-rent' }
-                    ].map((item, index) => (
-                      <motion.a
-                        key={item.name}
-                        href={item.href}
-                        className="block px-4 py-2 text-white hover:bg-[#365D77] transition-all duration-200"
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.05 }}
-                        whileHover={{ scale: 1.02, x: 2 }}
-                      >
-                        <div className="text-sm font-medium">{item.name}</div>
-                      </motion.a>
-                    ))}
-                  </div>
+                  {[
+                    { name: 'Electronic Machines', href: '/megisha-machinery-store/electronic-machines' },
+                    { name: 'Car Deals for sell', href: '/megisha-machinery-store/car-deals-for-sell' },
+                    { name: 'Car Deals for rent', href: '/megisha-machinery-store/car-deals-for-rent' }
+                  ].map((item) => (
+                    <a key={item.name} href={item.href} className="block px-4 py-2 text-gray-700 hover:bg-[#FFF5F5] hover:text-[#C41E3A] transition-all">
+                      <div className="font-medium">{item.name}</div>
+                    </a>
+                  ))}
                 </motion.div>
               </div>
             </div>
           </div>
 
-          {/* Mobile menu button */}
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="lg:hidden text-white"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
+          <button className={`lg:hidden ${isScrolled ? 'text-[#C41E3A]' : 'text-white'}`} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </motion.button>
+          </button>
         </div>
-
-        {/* Mobile Navigation */}
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ 
-            opacity: isMobileMenuOpen ? 1 : 0,
-            height: isMobileMenuOpen ? 'auto' : 0
-          }}
-          transition={{ duration: 0.3 }}
-          className="lg:hidden overflow-hidden"
-        >
-          <div className="py-4 space-y-2">
-            <div className="mb-4">
-              <h4 className="text-white font-semibold mb-2 px-4">Properties</h4>
-              <div className="space-y-1">
-                {[
-                  { name: 'Plot (36)', href: '/properties/plots' },
-                  { name: 'Residential (69)', href: '/properties/residentials' },
-                  { name: 'Villa (22)', href: '/properties/villa' },
-                  { name: 'Commercial (10)', href: '/properties/commercial' },
-                  { name: 'Apartment (41)', href: '/properties/appartment' }
-                ].map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="block px-4 py-2 text-white hover:bg-[#2a4658] rounded-lg transition-colors"
-                  >
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-            </div>
-            
-            <div className="mb-4">
-              <h4 className="text-white font-semibold mb-2 px-4">Surveying Services</h4>
-              <div className="space-y-1">
-                {[
-                  { name: 'Mining Surveying', href: '/surveying-services/mining-surveying' },
-                  { name: 'Cadastral Surveying', href: '/surveying-services/cadastral-surveying' },
-                  { name: 'Topographic Surveying', href: '/surveying-services/topographic-surveying' },
-                  { name: 'Construction Surveying', href: '/surveying-services/construction-surveying' }
-                ].map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="block px-4 py-2 text-white hover:bg-[#2a4658] rounded-lg transition-colors"
-                  >
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            <a href="#" className="block px-4 py-2 text-white hover:bg-[#2a4658] rounded-lg transition-colors font-semibold">
-              Architectural service
-            </a>
-            
-            <div className="mb-4">
-              <h4 className="text-white font-semibold mb-2 px-4">Megisha Store</h4>
-              <div className="space-y-1">
-                {[
-                  { name: 'Electronic Machines', href: '/megisha-machinery-store/electronic-machines' },
-                  { name: 'Car Deals for sell', href: '/megisha-machinery-store/car-deals-for-sell' },
-                  { name: 'Car Deals for rent', href: '/megisha-machinery-store/car-deals-for-rent' }
-                ].map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="block px-4 py-2 text-white hover:bg-[#2a4658] rounded-lg transition-colors"
-                  >
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </motion.nav>
   );
