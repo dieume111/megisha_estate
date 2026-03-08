@@ -41,65 +41,10 @@ function PlotsPage() {
       }
       
       const data = await response.json();
-      
-      // If no data from API, use fallback data
-      if (!data || data.length === 0) {
-        setPlots([
-          {
-            id: 1,
-            title: 'Prime Commercial Plot',
-            description: 'Excellent location for commercial development',
-            size: '500 sqm',
-            price: 25000000,
-            currency: 'RWF',
-            use_type: 'commercial' as const,
-            location: 'Kigali CBD',
-            image_url: '/images/1080x/WhatsApp Image 2026-03-07 at 11.10.26.jpeg',
-            featured: true,
-            status: 'available' as const,
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString()
-          },
-          {
-            id: 2,
-            title: 'Residential Plot',
-            description: 'Perfect for building your dream home',
-            size: '400 sqm',
-            price: 18000000,
-            currency: 'RWF',
-            use_type: 'residential' as const,
-            location: 'Nyarutarama',
-            image_url: '/images/1080x/WhatsApp Image 2026-03-07 at 11.10.27.jpeg',
-            featured: true,
-            status: 'available' as const,
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString()
-          }
-        ]);
-      } else {
-        setPlots(data);
-      }
+      setPlots(data);
       setError(null);
     } catch (err) {
-      // On error, use fallback data
-      setPlots([
-        {
-          id: 1,
-          title: 'Prime Commercial Plot',
-          description: 'Excellent location for commercial development',
-          size: '500 sqm',
-          price: 25000000,
-          currency: 'RWF',
-          use_type: 'commercial' as const,
-          location: 'Kigali CBD',
-          image_url: '/images/1080x/WhatsApp Image 2026-03-07 at 11.10.26.jpeg',
-          featured: true,
-          status: 'available' as const,
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
-        }
-      ]);
-      setError(null);
+      setError(err instanceof Error ? err.message : 'An error occurred');
       console.error('Error fetching plots:', err);
     } finally {
       setLoading(false);
@@ -217,7 +162,7 @@ function PlotsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="text-center mb-16"

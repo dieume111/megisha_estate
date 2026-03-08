@@ -1,10 +1,14 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { MapPin, Home, DollarSign, Tag, CheckCircle, Bed, Bath } from 'lucide-react';
+import { MapPin, Bed, Bath, Share2, Maximize } from 'lucide-react';
 import { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import Image from 'next/image';
 import { memo } from 'react';
+=======
+import { FaWhatsapp } from 'react-icons/fa';
+import Image from 'next/image';
+>>>>>>> 035045bcfef7c038601f556dd848c744706144b8
 
 interface Residential {
   id: number;
@@ -20,14 +24,27 @@ interface Residential {
   featured: boolean;
   status: 'available' | 'sold' | 'pending';
   amenities: string[];
-  created_at: string;
-  updated_at: string;
 }
 
+<<<<<<< HEAD
 function ResidentialsPage() {
+=======
+const residentialImages = [
+  '/images/residentials/WhatsApp Image 2026-03-08 at 16.37.59.jpeg',
+  '/images/residentials/WhatsApp Image 2026-03-08 at 16.38.00.jpeg',
+  '/images/residentials/WhatsApp Image 2026-03-08 at 16.38.00 (1).jpeg',
+  '/images/residentials/WhatsApp Image 2026-03-08 at 16.38.00 (2).jpeg',
+  '/images/residentials/WhatsApp Image 2026-03-08 at 16.38.00 (3).jpeg',
+  '/images/residentials/WhatsApp Image 2026-03-08 at 16.38.01.jpeg',
+  '/images/residentials/WhatsApp Image 2026-03-08 at 16.38.01 (1).jpeg',
+  '/images/residentials/WhatsApp Image 2026-03-08 at 16.38.01 (2).jpeg',
+  '/images/residentials/WhatsApp Image 2026-03-08 at 16.38.01 (3).jpeg',
+];
+
+export default function ResidentialsPage() {
+>>>>>>> 035045bcfef7c038601f556dd848c744706144b8
   const [residentials, setResidentials] = useState<Residential[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchResidentials();
@@ -35,114 +52,20 @@ function ResidentialsPage() {
 
   const fetchResidentials = async () => {
     try {
-      setLoading(true);
       const response = await fetch('/api/residentials');
-      
-      if (!response.ok) {
-        throw new Error('Failed to fetch residentials');
-      }
-      
       const data = await response.json();
       
-      // If no data from API, use fallback data
-      if (!data || data.length === 0) {
-        setResidentials([
-          {
-            id: 1,
-            title: 'Modern Family Home',
-            description: 'Beautiful 3-bedroom home in a quiet neighborhood',
-            location: 'Kacyiru',
-            beds: 3,
-            baths: 2,
-            area: '250 sqm',
-            price: 45000000,
-            currency: 'RWF',
-            image_url: '/images/1080x/WhatsApp Image 2026-03-07 at 11.04.01.jpeg',
-            featured: true,
-            status: 'available' as const,
-            amenities: ['Parking', 'Garden', 'Security'],
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString()
-          },
-          {
-            id: 2,
-            title: 'Spacious Villa',
-            description: 'Luxury 4-bedroom villa with modern amenities',
-            location: 'Nyarutarama',
-            beds: 4,
-            baths: 3,
-            area: '350 sqm',
-            price: 75000000,
-            currency: 'RWF',
-            image_url: '/images/1080x/WhatsApp Image 2026-03-07 at 11.04.02.jpeg',
-            featured: true,
-            status: 'available' as const,
-            amenities: ['Pool', 'Gym', 'Garden', 'Security'],
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString()
-          },
-          {
-            id: 3,
-            title: 'Cozy Apartment',
-            description: 'Comfortable 2-bedroom apartment in city center',
-            location: 'Kimihurura',
-            beds: 2,
-            baths: 2,
-            area: '120 sqm',
-            price: 35000000,
-            currency: 'RWF',
-            image_url: '/images/1080x/WhatsApp Image 2026-03-07 at 11.04.04.jpeg',
-            featured: false,
-            status: 'available' as const,
-            amenities: ['Parking', 'Security'],
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString()
-          }
-        ]);
+      if (data && data.length > 0) {
+        const withImages = data.map((item: Residential, index: number) => ({
+          ...item,
+          image_url: residentialImages[index % residentialImages.length]
+        }));
+        setResidentials(withImages);
       } else {
-        setResidentials(data);
+        setResidentials([]);
       }
-      setError(null);
     } catch (err) {
-      // On error, use fallback data
-      setResidentials([
-        {
-          id: 1,
-          title: 'Modern Family Home',
-          description: 'Beautiful 3-bedroom home in a quiet neighborhood',
-          location: 'Kacyiru',
-          beds: 3,
-          baths: 2,
-          area: '250 sqm',
-          price: 45000000,
-          currency: 'RWF',
-          image_url: '/images/1080x/WhatsApp Image 2026-03-07 at 11.04.01.jpeg',
-          featured: true,
-          status: 'available' as const,
-          amenities: ['Parking', 'Garden', 'Security'],
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
-        },
-        {
-          id: 2,
-          title: 'Spacious Villa',
-          description: 'Luxury 4-bedroom villa with modern amenities',
-          location: 'Nyarutarama',
-          beds: 4,
-          baths: 3,
-          area: '350 sqm',
-          price: 75000000,
-          currency: 'RWF',
-          image_url: '/images/1080x/WhatsApp Image 2026-03-07 at 11.04.02.jpeg',
-          featured: true,
-          status: 'available' as const,
-          amenities: ['Pool', 'Gym', 'Garden', 'Security'],
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
-        }
-      ]);
-      setError(null);
-      console.error('Error fetching residentials:', err);
+      setResidentials([]);
     } finally {
       setLoading(false);
     }
@@ -153,48 +76,22 @@ function ResidentialsPage() {
       style: 'currency',
       currency: currency === 'RWF' ? 'RWF' : 'USD',
       minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
     }).format(price);
   };
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading residential properties...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-red-600 mb-4">
-            <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">Error Loading Residentials</h2>
-          <p className="text-gray-600 mb-4">{error}</p>
-          <button
-            onClick={fetchResidentials}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            Try Again
-          </button>
-        </div>
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#C41E3A]"></div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden h-96">
+    <div className="min-h-screen bg-white">
+      <section className="relative h-96">
         <div className="absolute inset-0">
+<<<<<<< HEAD
           <Image
             src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
             alt="Residential Properties"
@@ -203,47 +100,29 @@ function ResidentialsPage() {
             sizes="100vw"
             priority
           />
+=======
+          <img src={residentialImages[0]} alt="Residential" className="w-full h-full object-cover" />
+>>>>>>> 035045bcfef7c038601f556dd848c744706144b8
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"></div>
         </div>
-        
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-white"
-          >
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              Residential
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-400">
-                Properties
-              </span>
+        <div className="relative max-w-7xl mx-auto px-4 h-full flex items-center">
+          <div className="text-white">
+            <h1 className="text-5xl font-bold mb-4">
+              Residential <span className="block text-[#C41E3A]">Properties</span>
             </h1>
-            <p className="text-xl text-blue-100 max-w-2xl">
-              Find your perfect home from our curated selection of residential properties across Rwanda
-            </p>
-          </motion.div>
+            <p className="text-xl">Find your perfect home from our curated selection</p>
+          </div>
         </div>
       </section>
 
-      {/* Residentials Grid Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Available Residential Properties
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover our carefully selected homes designed for comfortable living
-            </p>
-          </motion.div>
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Available Properties</h2>
+            <p className="text-xl text-gray-600">Discover our carefully selected homes</p>
+          </div>
 
+<<<<<<< HEAD
           {residentials.length === 0 ? (
             <div className="text-center py-12">
               <div className="text-gray-400 mb-4">
@@ -295,70 +174,49 @@ function ResidentialsPage() {
                         {residential.status.charAt(0).toUpperCase() + residential.status.slice(1)}
                       </span>
                     </div>
+=======
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {residentials.map((property) => (
+              <div key={property.id} className="bg-white rounded-lg shadow-md overflow-hidden group">
+                <div className="relative h-56 overflow-hidden">
+                  <Image src={property.image_url} alt={property.title} fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes="33vw" />
+                  <div className="absolute top-3 right-3 bg-[#C41E3A] text-white px-2 py-1 rounded-full text-xs font-semibold">
+                    Featured
+                  </div>
+                </div>
+                
+                <div className="p-4">
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">{property.title}</h3>
+                  <div className="flex items-center text-gray-600 mb-3">
+                    <MapPin className="w-4 h-4 mr-1 text-[#C41E3A]" />
+                    <span className="text-sm">{property.location}</span>
+>>>>>>> 035045bcfef7c038601f556dd848c744706144b8
                   </div>
                   
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{residential.title}</h3>
-                    
-                    <div className="flex items-center text-gray-600 mb-3">
-                      <MapPin className="w-4 h-4 mr-2 text-blue-500" />
-                      <span>{residential.location}</span>
-                    </div>
-                    
-                    <p className="text-gray-600 mb-4 line-clamp-2">{residential.description}</p>
-                    
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center space-x-4">
-                        <div className="flex items-center">
-                          <Bed className="w-4 h-4 mr-1 text-purple-500" />
-                          <span className="text-sm text-gray-600">{residential.beds}</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Bath className="w-4 h-4 mr-1 text-cyan-500" />
-                          <span className="text-sm text-gray-600">{residential.baths}</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Home className="w-4 h-4 mr-2 text-green-500" />
-                          <span className="text-sm text-gray-600">{residential.area}</span>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-2xl font-bold text-green-600">
-                          {formatPrice(residential.price, residential.currency)}
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Amenities */}
-                    {residential.amenities && residential.amenities.length > 0 && (
-                      <div className="mb-4">
-                        <div className="flex flex-wrap gap-2">
-                          {residential.amenities.slice(0, 3).map((amenity, idx) => (
-                            <span key={idx} className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">
-                              {amenity}
-                            </span>
-                          ))}
-                          {residential.amenities.length > 3 && (
-                            <span className="text-gray-500 text-xs">+{residential.amenities.length - 3} more</span>
-                          )}
-                        </div>
-                      </div>
-                    )}
-                    
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-3 rounded-xl font-bold hover:from-blue-600 hover:to-indigo-700 transition-all duration-300"
-                      disabled={residential.status !== 'available'}
-                    >
-                      {residential.status === 'available' ? 'View Details' : 
-                       residential.status === 'sold' ? 'Sold' : 'Pending'}
-                    </motion.button>
+                  <div className="flex items-center justify-between text-gray-600 mb-3">
+                    <div className="flex items-center"><Bed className="w-4 h-4 mr-1 text-[#C41E3A]" /><span className="text-sm">{property.beds}</span></div>
+                    <div className="flex items-center"><Bath className="w-4 h-4 mr-1 text-[#C41E3A]" /><span className="text-sm">{property.baths}</span></div>
+                    <div className="flex items-center"><Maximize className="w-4 h-4 mr-1 text-[#C41E3A]" /><span className="text-sm">{property.area}</span></div>
                   </div>
-                </motion.div>
-              ))}
-            </div>
-          )}
+                  
+                  <div className="text-xl font-bold text-[#C41E3A] mb-3">{formatPrice(property.price, property.currency)}</div>
+                  
+                  <div className="flex gap-2">
+                    <button className="flex-1 bg-[#C41E3A] text-white py-2 rounded-lg text-sm font-semibold hover:bg-[#8B0000] transition-colors flex items-center justify-center">
+                      <FaWhatsapp className="w-4 h-4 mr-1" />WhatsApp
+                    </button>
+                    <button className="p-2 border-2 border-[#C41E3A] text-[#C41E3A] rounded-lg hover:bg-[#C41E3A] hover:text-white transition-colors">
+                      <Share2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                  
+                  <button className="w-full mt-2 border-2 border-gray-200 text-gray-700 py-2 rounded-lg text-sm font-semibold hover:border-[#C41E3A] hover:text-[#C41E3A] transition-colors">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </div>
