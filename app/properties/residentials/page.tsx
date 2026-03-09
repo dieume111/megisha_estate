@@ -2,8 +2,13 @@
 
 import { MapPin, Bed, Bath, Share2, Maximize } from 'lucide-react';
 import { useState, useEffect } from 'react';
+<<<<<<< HEAD
+import Image from 'next/image';
+import { memo } from 'react';
+=======
 import { FaWhatsapp } from 'react-icons/fa';
 import Image from 'next/image';
+>>>>>>> 035045bcfef7c038601f556dd848c744706144b8
 
 interface Residential {
   id: number;
@@ -21,6 +26,9 @@ interface Residential {
   amenities: string[];
 }
 
+<<<<<<< HEAD
+function ResidentialsPage() {
+=======
 const residentialImages = [
   '/images/residentials/WhatsApp Image 2026-03-08 at 16.37.59.jpeg',
   '/images/residentials/WhatsApp Image 2026-03-08 at 16.38.00.jpeg',
@@ -34,6 +42,7 @@ const residentialImages = [
 ];
 
 export default function ResidentialsPage() {
+>>>>>>> 035045bcfef7c038601f556dd848c744706144b8
   const [residentials, setResidentials] = useState<Residential[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -82,7 +91,18 @@ export default function ResidentialsPage() {
     <div className="min-h-screen bg-white">
       <section className="relative h-96">
         <div className="absolute inset-0">
+<<<<<<< HEAD
+          <Image
+            src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            alt="Residential Properties"
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
+=======
           <img src={residentialImages[0]} alt="Residential" className="w-full h-full object-cover" />
+>>>>>>> 035045bcfef7c038601f556dd848c744706144b8
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"></div>
         </div>
         <div className="relative max-w-7xl mx-auto px-4 h-full flex items-center">
@@ -102,6 +122,59 @@ export default function ResidentialsPage() {
             <p className="text-xl text-gray-600">Discover our carefully selected homes</p>
           </div>
 
+<<<<<<< HEAD
+          {residentials.length === 0 ? (
+            <div className="text-center py-12">
+              <div className="text-gray-400 mb-4">
+                <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">No Residential Properties Available</h3>
+              <p className="text-gray-600">Check back later for new residential listings</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {residentials.map((residential, index) => (
+                <motion.div
+                  key={residential.id}
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500"
+                >
+                  <div className="relative h-56">
+                    <Image
+                      src={residential.image_url}
+                      alt={residential.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    
+                    {/* Featured Badge */}
+                    {residential.featured && (
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                          Featured
+                        </span>
+                      </div>
+                    )}
+                    
+                    <div className="absolute top-4 right-4">
+                      {/* Status Badge */}
+                      <span className={
+                        "px-3 py-1 rounded-full text-sm font-medium " +
+                        (residential.status === 'available' ? 'bg-green-100 text-green-700' :
+                         residential.status === 'sold' ? 'bg-red-100 text-red-700' :
+                         'bg-yellow-100 text-yellow-700')
+                      }>
+                        {residential.status.charAt(0).toUpperCase() + residential.status.slice(1)}
+                      </span>
+                    </div>
+=======
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {residentials.map((property) => (
               <div key={property.id} className="bg-white rounded-lg shadow-md overflow-hidden group">
@@ -117,6 +190,7 @@ export default function ResidentialsPage() {
                   <div className="flex items-center text-gray-600 mb-3">
                     <MapPin className="w-4 h-4 mr-1 text-[#C41E3A]" />
                     <span className="text-sm">{property.location}</span>
+>>>>>>> 035045bcfef7c038601f556dd848c744706144b8
                   </div>
                   
                   <div className="flex items-center justify-between text-gray-600 mb-3">
@@ -148,3 +222,5 @@ export default function ResidentialsPage() {
     </div>
   );
 }
+
+export default memo(ResidentialsPage);

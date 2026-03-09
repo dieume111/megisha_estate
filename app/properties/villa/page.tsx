@@ -1,5 +1,60 @@
 'use client';
 
+<<<<<<< HEAD
+import { motion } from 'framer-motion';
+import { Home, MapPin, Bed, Bath, Square, DollarSign, Car, Trees, Shield } from 'lucide-react';
+import Image from 'next/image';
+import { memo } from 'react';
+
+function VillaPage() {
+  const villas = [
+    {
+      id: 1,
+      title: "Luxury Pool Villa",
+      location: "Kigali, Nyarutarama",
+      beds: 6,
+      baths: 5,
+      area: "500 sqm",
+      price: "RWF 120,000,000",
+      featured: true,
+      amenities: ["Private Pool", "Garden", "Garage", "Security"],
+      description: "Ultra-luxury villa with private pool and stunning views"
+    },
+    {
+      id: 2,
+      title: "Modern Executive Villa",
+      location: "Kigali, Kimihurura",
+      beds: 5,
+      baths: 4,
+      area: "450 sqm",
+      price: "RWF 95,000,000",
+      amenities: ["Garden", "Garage", "Security"],
+      description: "Executive villa perfect for families"
+    },
+    {
+      id: 3,
+      title: "Garden Villa Estate",
+      location: "Kigali, Kacyiru",
+      beds: 4,
+      baths: 3,
+      area: "380 sqm",
+      price: "RWF 75,000,000",
+      amenities: ["Large Garden", "Garage"],
+      description: "Beautiful villa with expansive garden"
+    },
+    {
+      id: 4,
+      title: "Contemporary Villa",
+      location: "Kigali, Remera",
+      beds: 5,
+      baths: 4,
+      area: "420 sqm",
+      price: "RWF 85,000,000",
+      amenities: ["Modern Design", "Garage", "Security"],
+      description: "Contemporary design with modern amenities"
+    }
+  ];
+=======
 import { MapPin, Bed, Bath, Share2, Maximize } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import Image from 'next/image';
@@ -29,12 +84,24 @@ export default function VillaPage() {
   const formatPrice = (price: number) => new Intl.NumberFormat('rw-RW', { style: 'currency', currency: 'RWF', minimumFractionDigits: 0 }).format(price);
 
   if (loading) return <div className="min-h-screen bg-white flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#C41E3A]"></div></div>;
+>>>>>>> 035045bcfef7c038601f556dd848c744706144b8
 
   return (
     <div className="min-h-screen bg-white">
       <section className="relative h-96">
         <div className="absolute inset-0">
+<<<<<<< HEAD
+          <Image
+            src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            alt="Luxury Villas"
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
+=======
           <img src={villaImages[0]} alt="Villas" className="w-full h-full object-cover" />
+>>>>>>> 035045bcfef7c038601f556dd848c744706144b8
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"></div>
         </div>
         <div className="relative max-w-7xl mx-auto px-4 h-full flex items-center">
@@ -89,3 +156,5 @@ export default function VillaPage() {
     </div>
   );
 }
+
+export default memo(VillaPage);

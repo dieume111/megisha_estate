@@ -1,5 +1,56 @@
 'use client';
 
+<<<<<<< HEAD
+import { motion } from 'framer-motion';
+import { Building, MapPin, Square, DollarSign, Users, Car, Shield, Wifi } from 'lucide-react';
+import Image from 'next/image';
+import { memo } from 'react';
+
+function CommercialPage() {
+  const commercials = [
+    {
+      id: 1,
+      title: "Office Complex Downtown",
+      location: "Kigali City Center",
+      area: "2000 sqm",
+      price: "RWF 250,000,000",
+      type: "Office Space",
+      featured: true,
+      amenities: ["Parking", "Security", "WiFi", "Elevator"],
+      description: "Prime office space in the heart of Kigali business district"
+    },
+    {
+      id: 2,
+      title: "Retail Shopping Center",
+      location: "Kigali, Nyabugogo",
+      area: "1500 sqm",
+      price: "RWF 180,000,000",
+      type: "Retail",
+      amenities: ["Parking", "Security", "High Traffic"],
+      description: "High-traffic retail space perfect for shopping center"
+    },
+    {
+      id: 3,
+      title: "Industrial Warehouse",
+      location: "Kigali, Kicukiro",
+      area: "3000 sqm",
+      price: "RWF 150,000,000",
+      type: "Industrial",
+      amenities: ["Large Space", "Loading Dock", "Security"],
+      description: "Spacious warehouse ideal for industrial operations"
+    },
+    {
+      id: 4,
+      title: "Mixed Use Building",
+      location: "Kigali, Remera",
+      area: "1200 sqm",
+      price: "RWF 200,000,000",
+      type: "Mixed Use",
+      amenities: ["Retail + Office", "Parking", "Prime Location"],
+      description: "Versatile mixed-use building with retail and office spaces"
+    }
+  ];
+=======
 import { MapPin, Share2, Maximize, Building } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import Image from 'next/image';
@@ -28,12 +79,24 @@ export default function CommercialPage() {
   const formatPrice = (price: number) => new Intl.NumberFormat('rw-RW', { style: 'currency', currency: 'RWF', minimumFractionDigits: 0 }).format(price);
 
   if (loading) return <div className="min-h-screen bg-white flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#C41E3A]"></div></div>;
+>>>>>>> 035045bcfef7c038601f556dd848c744706144b8
 
   return (
     <div className="min-h-screen bg-white">
       <section className="relative h-96">
         <div className="absolute inset-0">
+<<<<<<< HEAD
+          <Image
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            alt="Commercial Properties"
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
+=======
           <img src={commercialImages[0]} alt="Commercial" className="w-full h-full object-cover" />
+>>>>>>> 035045bcfef7c038601f556dd848c744706144b8
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"></div>
         </div>
         <div className="relative max-w-7xl mx-auto px-4 h-full flex items-center">
@@ -87,3 +150,5 @@ export default function CommercialPage() {
     </div>
   );
 }
+
+export default memo(CommercialPage);
