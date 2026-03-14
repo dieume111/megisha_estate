@@ -80,7 +80,7 @@ function HomePage() {
       {/* Feedback Ribbon */}
       <button
         onClick={() => setFeedbackOpen(true)}
-        className="fixed right-0 top-1/2 -translate-y-1/2 bg-[#C41E3A] text-white px-2 py-4 rounded-l-lg shadow-lg z-50 hover:bg-[#8B0000] transition-colors text-xs"
+        className="fixed right-0 top-1/2 -translate-y-1/2 bg-[#771D1D] text-white px-2 py-4 rounded-l-lg shadow-lg z-50 hover:bg-[#771D1D] transition-colors text-xs"
         style={{ writingMode: 'vertical-rl' }}
       >
         <MessageCircle className="w-4 h-4 inline mr-1" />
@@ -105,12 +105,12 @@ function HomePage() {
               transition={{ type: 'spring', damping: 25 }}
               className="fixed right-0 top-1/2 -translate-y-1/2 w-96 bg-white shadow-2xl z-50 p-6 rounded-l-2xl"
             >
-              <h3 className="text-2xl font-bold text-[#C41E3A] mb-4">Send Feedback</h3>
+              <h3 className="text-2xl font-bold text-[#771D1D] mb-4">Send Feedback</h3>
               <form className="space-y-4">
-                <input type="text" placeholder="Your Name" className="w-full px-4 py-2 border-2 border-[#C41E3A] rounded-lg focus:border-[#8B0000] focus:outline-none placeholder:text-gray-500" />
-                <input type="email" placeholder="Your Email" className="w-full px-4 py-2 border-2 border-[#C41E3A] rounded-lg focus:border-[#8B0000] focus:outline-none placeholder:text-gray-500" />
-                <textarea placeholder="Your Message" rows={4} className="w-full px-4 py-2 border-2 border-[#C41E3A] rounded-lg focus:border-[#8B0000] focus:outline-none placeholder:text-gray-500" />
-                <button type="submit" className="w-full bg-[#C41E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#8B0000] transition-colors">
+                <input type="text" placeholder="Your Name" className="w-full px-4 py-2 border-2 border-[#771D1D] rounded-lg focus:border-[#771D1D] focus:outline-none placeholder:text-gray-500" />
+                <input type="email" placeholder="Your Email" className="w-full px-4 py-2 border-2 border-[#771D1D] rounded-lg focus:border-[#771D1D] focus:outline-none placeholder:text-gray-500" />
+                <textarea placeholder="Your Message" rows={4} className="w-full px-4 py-2 border-2 border-[#771D1D] rounded-lg focus:border-[#771D1D] focus:outline-none placeholder:text-gray-500" />
+                <button type="submit" className="w-full bg-[#771D1D] text-white py-3 rounded-lg font-semibold hover:bg-[#771D1D] transition-colors">
                   Submit
                 </button>
               </form>
@@ -123,7 +123,7 @@ function HomePage() {
       <section className="relative h-screen overflow-hidden bg-gray-900">
         {!imagesLoaded ? (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-[#C41E3A]"></div>
+            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-[#771D1D]"></div>
           </div>
         ) : (
           <>
@@ -149,42 +149,42 @@ function HomePage() {
                   {propertyOverlays[currentSlide].title}
                 </h1>
                 <div className="flex items-center text-white mb-4">
-                  <MapPin className="w-5 h-5 mr-2 text-[#C41E3A]" />
+                  <MapPin className="w-5 h-5 mr-2 text-[#771D1D]" />
                   <span className="text-lg">{propertyOverlays[currentSlide].location}</span>
                 </div>
                 <div className="grid grid-cols-3 gap-4 mb-6">
                   <div className="text-center">
-                    <Bed className="w-6 h-6 mx-auto mb-1 text-[#C41E3A]" />
+                    <Bed className="w-6 h-6 mx-auto mb-1 text-[#771D1D]" />
                     <p className="text-sm text-white">{propertyOverlays[currentSlide].beds} Beds</p>
                   </div>
                   <div className="text-center">
-                    <Bath className="w-6 h-6 mx-auto mb-1 text-[#C41E3A]" />
+                    <Bath className="w-6 h-6 mx-auto mb-1 text-[#771D1D]" />
                     <p className="text-sm text-white">{propertyOverlays[currentSlide].baths} Baths</p>
                   </div>
                   <div className="text-center">
-                    <Maximize className="w-6 h-6 mx-auto mb-1 text-[#C41E3A]" />
+                    <Maximize className="w-6 h-6 mx-auto mb-1 text-[#771D1D]" />
                     <p className="text-sm text-white">{propertyOverlays[currentSlide].area}</p>
                   </div>
                 </div>
-                <div className="text-3xl font-bold text-[#C41E3A] mb-6">
+                <div className="text-3xl font-bold text-[#771D1D] mb-6">
                   {propertyOverlays[currentSlide].price}
                 </div>
-                <button className="w-full bg-[#C41E3A] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#8B0000] transition-colors">
+                <button className="w-full bg-[#771D1D] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#771D1D] transition-colors">
                   View Details
                 </button>
               </motion.div>
             </div>
 
             <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full hover:bg-white transition-colors">
-              <ChevronLeft className="w-6 h-6 text-[#C41E3A]" />
+              <ChevronLeft className="w-6 h-6 text-[#771D1D]" />
             </button>
             <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full hover:bg-white transition-colors">
-              <ChevronRight className="w-6 h-6 text-[#C41E3A]" />
+              <ChevronRight className="w-6 h-6 text-[#771D1D]" />
             </button>
 
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
               {slideImages.map((_, idx) => (
-                <button key={idx} onClick={() => setCurrentSlide(idx)} className={`h-3 rounded-full transition-all ${idx === currentSlide ? 'bg-[#C41E3A] w-8' : 'bg-white/50 w-3'}`} />
+                <button key={idx} onClick={() => setCurrentSlide(idx)} className={`h-3 rounded-full transition-all ${idx === currentSlide ? 'bg-[#771D1D] w-8' : 'bg-white/50 w-3'}`} />
               ))}
             </div>
           </>
@@ -195,30 +195,30 @@ function HomePage() {
       <section className="relative -mt-32 z-10 pb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="bg-white rounded-2xl shadow-2xl p-6 border-2 border-gray-200">
-            <h2 className="text-2xl font-bold text-[#C41E3A] mb-6 flex items-center">
+            <h2 className="text-2xl font-bold text-[#771D1D] mb-6 flex items-center">
               <Search className="w-6 h-6 mr-2" />
               Find Your Dream Property
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-              <input type="text" placeholder="Location" className="px-4 py-3 border-2 border-[#C41E3A] rounded-lg focus:border-[#8B0000] focus:outline-none placeholder:text-gray-600" />
-              <select className="px-4 py-3 border-2 border-[#C41E3A] rounded-lg focus:border-[#8B0000] focus:outline-none text-gray-700">
+              <input type="text" placeholder="Location" className="px-4 py-3 border-2 border-[#771D1D] rounded-lg focus:border-[#771D1D] focus:outline-none placeholder:text-gray-600" />
+              <select className="px-4 py-3 border-2 border-[#771D1D] rounded-lg focus:border-[#771D1D] focus:outline-none text-gray-700">
                 <option>Property Type</option>
                 <option>Residential</option>
                 <option>Commercial</option>
                 <option>Villa</option>
               </select>
-              <select className="px-4 py-3 border-2 border-[#C41E3A] rounded-lg focus:border-[#8B0000] focus:outline-none text-gray-700">
+              <select className="px-4 py-3 border-2 border-[#771D1D] rounded-lg focus:border-[#771D1D] focus:outline-none text-gray-700">
                 <option>Bedrooms</option>
                 <option>1+</option>
                 <option>2+</option>
                 <option>3+</option>
               </select>
-              <select className="px-4 py-3 border-2 border-[#C41E3A] rounded-lg focus:border-[#8B0000] focus:outline-none text-gray-700">
+              <select className="px-4 py-3 border-2 border-[#771D1D] rounded-lg focus:border-[#771D1D] focus:outline-none text-gray-700">
                 <option>Status</option>
                 <option>For Sale</option>
                 <option>For Rent</option>
               </select>
-              <select className="px-4 py-3 border-2 border-[#C41E3A] rounded-lg focus:border-[#8B0000] focus:outline-none text-gray-700">
+              <select className="px-4 py-3 border-2 border-[#771D1D] rounded-lg focus:border-[#771D1D] focus:outline-none text-gray-700">
                 <option>Price Range</option>
                 <option>Under 20M</option>
                 <option>20M - 50M</option>
@@ -227,7 +227,7 @@ function HomePage() {
                 <option>200M+</option>
               </select>
             </div>
-            <button className="w-full mt-4 bg-[#C41E3A] text-white py-3 rounded-lg font-semibold hover:bg-[#8B0000] transition-colors flex items-center justify-center">
+            <button className="w-full mt-4 bg-[#771D1D] text-white py-3 rounded-lg font-semibold hover:bg-[#771D1D] transition-colors flex items-center justify-center">
               <Search className="w-5 h-5 mr-2" />
               Search Properties
             </button>
@@ -257,7 +257,7 @@ function HomePage() {
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                     sizes="33vw"
                   />
-                  <div className="absolute top-3 right-3 bg-[#C41E3A] text-white px-2 py-1 rounded-full text-xs font-semibold">
+                  <div className="absolute top-3 right-3 bg-[#771D1D] text-white px-2 py-1 rounded-full text-xs font-semibold">
                     Featured
                   </div>
                 </div>
@@ -265,38 +265,38 @@ function HomePage() {
                 <div className="p-4">
                   <h3 className="text-lg font-bold text-gray-900 mb-1">{property.title}</h3>
                   <div className="flex items-center text-gray-600 mb-3">
-                    <MapPin className="w-4 h-4 mr-1 text-[#C41E3A]" />
+                    <MapPin className="w-4 h-4 mr-1 text-[#771D1D]" />
                     <span className="text-sm">{property.location}</span>
                   </div>
                   
                   <div className="flex items-center justify-between text-gray-600 mb-3">
                     <div className="flex items-center">
-                      <Bed className="w-4 h-4 mr-1 text-[#C41E3A]" />
+                      <Bed className="w-4 h-4 mr-1 text-[#771D1D]" />
                       <span className="text-sm">{property.beds}</span>
                     </div>
                     <div className="flex items-center">
-                      <Bath className="w-4 h-4 mr-1 text-[#C41E3A]" />
+                      <Bath className="w-4 h-4 mr-1 text-[#771D1D]" />
                       <span className="text-sm">{property.baths}</span>
                     </div>
                     <div className="flex items-center">
-                      <Maximize className="w-4 h-4 mr-1 text-[#C41E3A]" />
+                      <Maximize className="w-4 h-4 mr-1 text-[#771D1D]" />
                       <span className="text-sm">{property.area}</span>
                     </div>
                   </div>
                   
-                  <div className="text-xl font-bold text-[#C41E3A] mb-3">{property.price}</div>
+                  <div className="text-xl font-bold text-[#771D1D] mb-3">{property.price}</div>
                   
                   <div className="flex gap-2">
-                    <button className="flex-1 bg-[#C41E3A] text-white py-2 rounded-lg text-sm font-semibold hover:bg-[#8B0000] transition-colors flex items-center justify-center">
+                    <button className="flex-1 bg-[#771D1D] text-white py-2 rounded-lg text-sm font-semibold hover:bg-[#771D1D] transition-colors flex items-center justify-center">
                       <FaWhatsapp className="w-4 h-4 mr-1" />
                       WhatsApp
                     </button>
-                    <button className="p-2 border-2 border-[#C41E3A] text-[#C41E3A] rounded-lg hover:bg-[#C41E3A] hover:text-white transition-colors">
+                    <button className="p-2 border-2 border-[#771D1D] text-[#771D1D] rounded-lg hover:bg-[#771D1D] hover:text-white transition-colors">
                       <Share2 className="w-4 h-4" />
                     </button>
                   </div>
                   
-                  <button className="w-full mt-2 border-2 border-gray-200 text-gray-700 py-2 rounded-lg text-sm font-semibold hover:border-[#C41E3A] hover:text-[#C41E3A] transition-colors">
+                  <button className="w-full mt-2 border-2 border-gray-200 text-gray-700 py-2 rounded-lg text-sm font-semibold hover:border-[#771D1D] hover:text-[#771D1D] transition-colors">
                     View Details
                   </button>
                 </div>
@@ -309,13 +309,13 @@ function HomePage() {
               <button
                 key={idx}
                 onClick={() => scrollToProperty(idx)}
-                className={`w-3 h-3 rounded-full transition-all ${propertyScroll === idx ? 'bg-[#C41E3A] w-8' : 'bg-gray-300'}`}
+                className={`w-3 h-3 rounded-full transition-all ${propertyScroll === idx ? 'bg-[#771D1D] w-8' : 'bg-gray-300'}`}
               />
             ))}
           </div>
           
           <div className="text-center mt-12">
-            <button className="bg-[#C41E3A] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#8B0000] transition-colors inline-flex items-center">
+            <button className="bg-[#771D1D] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#771D1D] transition-colors inline-flex items-center">
               See More Properties
               <ArrowRight className="w-5 h-5 ml-2" />
             </button>
@@ -369,7 +369,7 @@ function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-[#C41E3A] relative overflow-hidden">
+      <section className="py-20 bg-[#771D1D] relative overflow-hidden">
         {/* Pattern Background */}
         <div className="absolute inset-0 opacity-10">
           <svg width="100%" height="100%">
@@ -412,7 +412,7 @@ function HomePage() {
                 >
                   <div className="flex mb-3">
                     {[...Array(5)].map((_, i) => (
-                      <span key={i} className="text-[#C41E3A] text-lg">★</span>
+                      <span key={i} className="text-[#771D1D] text-lg">★</span>
                     ))}
                   </div>
                   <p className="text-gray-700 mb-4 italic text-sm">"{testimonial.content}"</p>
@@ -478,7 +478,7 @@ function HomePage() {
                 viewport={{ once: true }}
                 className="bg-white p-6 rounded-xl shadow-md flex items-center justify-center h-32 hover:shadow-lg transition-shadow"
               >
-                <Building className="w-16 h-16 text-[#C41E3A]" />
+                <Building className="w-16 h-16 text-[#771D1D]" />
               </motion.div>
             ))}
           </div>
@@ -517,9 +517,9 @@ function HomePage() {
                   />
                 </div>
                 <div className="p-6">
-                  <p className="text-sm text-[#C41E3A] mb-2">{news.date}</p>
+                  <p className="text-sm text-[#771D1D] mb-2">{news.date}</p>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">{news.title}</h3>
-                  <button className="text-[#C41E3A] font-semibold hover:underline flex items-center">
+                  <button className="text-[#771D1D] font-semibold hover:underline flex items-center">
                     Read More
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </button>
@@ -531,7 +531,7 @@ function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#C41E3A] relative overflow-hidden">
+      <section className="py-20 bg-[#771D1D] relative overflow-hidden">
         {/* Pattern Background */}
         <div className="absolute inset-0 opacity-10">
           <svg width="100%" height="100%">
@@ -552,7 +552,7 @@ function HomePage() {
           <p className="text-xl text-white/90 mb-8">
             Let our expert team help you discover the perfect home
           </p>
-          <button className="bg-white text-[#C41E3A] px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all inline-flex items-center">
+          <button className="bg-white text-[#771D1D] px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all inline-flex items-center">
             <FaWhatsapp className="w-6 h-6 mr-2" />
             Start Your Journey
           </button>

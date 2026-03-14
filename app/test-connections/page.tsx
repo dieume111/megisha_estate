@@ -53,7 +53,7 @@ export default function TestConnectionsPage() {
 
   const getStatusIcon = (status: boolean) => {
     if (status) return <CheckCircle className="w-5 h-5 text-green-500" />;
-    return <XCircle className="w-5 h-5 text-red-500" />;
+    return <XCircle className="w-5 h-5 text-[#771D1D]" />;
   };
 
   const getWarningIcon = () => {
@@ -83,7 +83,7 @@ export default function TestConnectionsPage() {
             <div className="space-y-6">
               {/* Database Status */}
               <div className={`p-4 rounded-lg border ${
-                results.database.connected ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'
+                results.database.connected ? 'border-green-200 bg-green-50' : 'border-[#771D1D]/20 bg-[#771D1D]/5'
               }`}>
                 <div className="flex items-center space-x-3">
                   {getStatusIcon(results.database.connected)}
@@ -102,7 +102,7 @@ export default function TestConnectionsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {Object.entries(results.tables).map(([name, table]) => (
                     <div key={name} className={`p-3 rounded-lg border ${
-                      table.exists ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'
+                      table.exists ? 'border-green-200 bg-green-50' : 'border-[#771D1D]/20 bg-[#771D1D]/5'
                     }`}>
                       <div className="flex items-center justify-between">
                         <div>

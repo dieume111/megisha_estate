@@ -28,7 +28,7 @@ export default function CadastralSurveyingPage() {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 h-full flex items-center">
           <div className="text-white">
-            <h1 className="text-5xl font-bold mb-4">Cadastral <span className="block text-[#C41E3A]">Surveying</span></h1>
+            <h1 className="text-5xl font-bold mb-4">Cadastral <span className="block text-[#771D1D]">Surveying</span></h1>
             <p className="text-xl">Professional cadastral surveying for land registration and boundary marking</p>
           </div>
         </div>
@@ -44,7 +44,7 @@ export default function CadastralSurveyingPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => (
               <div key={index} className="bg-white rounded-lg shadow-md p-6">
-                <div className="w-16 h-16 bg-[#C41E3A] rounded-xl flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-[#771D1D] rounded-xl flex items-center justify-center mb-6">
                   <service.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
@@ -52,7 +52,7 @@ export default function CadastralSurveyingPage() {
                 <ul className="space-y-2">
                   {service.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center text-sm text-gray-600">
-                      <div className="w-2 h-2 bg-[#C41E3A] rounded-full mr-2"></div>
+                      <div className="w-2 h-2 bg-[#771D1D] rounded-full mr-2"></div>
                       {feature}
                     </li>
                   ))}
@@ -79,10 +79,10 @@ export default function CadastralSurveyingPage() {
                 <div className="p-4">
                   <h3 className="text-lg font-bold text-gray-900 mb-2">Cadastral Project {index + 1}</h3>
                   <div className="flex items-center text-gray-600 mb-2">
-                    <MapPin className="w-4 h-4 mr-2 text-[#C41E3A]" />
+                    <MapPin className="w-4 h-4 mr-2 text-[#771D1D]" />
                     <span className="text-sm">Kigali, Rwanda</span>
                   </div>
-                  <span className="inline-block bg-[#FFF5F5] text-[#C41E3A] px-2 py-1 rounded-lg text-xs font-semibold">Completed</span>
+                  <span className="inline-block bg-[#771D1D1A] text-[#771D1D] px-2 py-1 rounded-lg text-xs font-semibold">Completed</span>
                 </div>
               </div>
             ))}

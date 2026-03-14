@@ -7,7 +7,7 @@ import { memo } from 'react';
 
 function Footer() {
   return (
-    <footer className="bg-white border-t-4 border-[#C41E3A] text-gray-700 py-16">
+    <footer className="bg-white border-t-4 border-[#771D1D] text-gray-700 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <motion.div
@@ -16,21 +16,21 @@ function Footer() {
             viewport={{ once: true }}
           >
             <div className="flex items-center mb-4">
-              <div className="w-10 h-10 rounded-lg bg-[#C41E3A] flex items-center justify-center mr-3">
+              <div className="w-10 h-10 rounded-lg bg-[#771D1D] flex items-center justify-center mr-3">
                 <Building className="w-6 h-6 text-white" />
               </div>
-              <h4 className="text-2xl font-bold text-[#C41E3A]">Megisha Estate</h4>
+              <h4 className="text-2xl font-bold text-[#771D1D]">Megisha Estate</h4>
             </div>
             <p className="text-gray-600 mb-6">
               Your trusted partner in real estate excellence across Rwanda
             </p>
             <div className="flex space-x-4">
               {[
-                { icon: FaFacebook, color: "hover:bg-[#C41E3A]" },
-                { icon: FaTwitter, color: "hover:bg-[#C41E3A]" },
-                { icon: FaInstagram, color: "hover:bg-[#C41E3A]" },
-                { icon: FaLinkedin, color: "hover:bg-[#C41E3A]" },
-                { icon: FaWhatsapp, color: "hover:bg-[#C41E3A]" },
+                { icon: FaFacebook, color: "hover:bg-[#771D1D]" },
+                { icon: FaTwitter, color: "hover:bg-[#771D1D]" },
+                { icon: FaInstagram, color: "hover:bg-[#771D1D]" },
+                { icon: FaLinkedin, color: "hover:bg-[#771D1D]" },
+                { icon: FaWhatsapp, color: "hover:bg-[#771D1D]" },
               ].map((social, index) => (
                 <motion.a
                   key={index}
@@ -51,11 +51,11 @@ function Footer() {
             transition={{ delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <h5 className="text-lg font-bold text-[#C41E3A] mb-6">Properties</h5>
+            <h5 className="text-lg font-bold text-[#771D1D] mb-6">Properties</h5>
             <ul className="space-y-3 text-gray-600">
               {['Residential', 'Commercial', 'Villas', 'Apartments', 'Plots'].map((item) => (
                 <li key={item}>
-                  <a href="#" className="hover:text-[#C41E3A] transition-colors flex items-center">
+                  <a href="#" className="hover:text-[#771D1D] transition-colors flex items-center">
                     <ArrowRight className="w-3 h-3 mr-2" />
                     {item}
                   </a>
@@ -70,18 +70,18 @@ function Footer() {
             transition={{ delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h5 className="text-lg font-bold text-[#C41E3A] mb-6">Services</h5>
+            <h5 className="text-lg font-bold text-[#771D1D] mb-6">Services</h5>
             <ul className="space-y-3 text-gray-600">
               {['Surveying', 'Architecture', 'Management', 'Consulting', 'Machine Rentals'].map((item) => (
                 <li key={item}>
-                  <a href="#" className="hover:text-[#C41E3A] transition-colors flex items-center">
+                  <a href="#" className="hover:text-[#771D1D] transition-colors flex items-center">
                     <ArrowRight className="w-3 h-3 mr-2" />
                     {item}
                   </a>
                 </li>
               ))}
               <li>
-                <a href="/admin/plots" className="hover:text-[#C41E3A] transition-colors flex items-center text-[#C41E3A] font-semibold">
+                <a href="/admin/plots" className="hover:text-[#771D1D] transition-colors flex items-center text-[#771D1D] font-semibold">
                   <ArrowRight className="w-3 h-3 mr-2" />
                   Admin Panel
                 </a>
@@ -95,22 +95,22 @@ function Footer() {
             transition={{ delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <h5 className="text-lg font-bold text-[#C41E3A] mb-6">Contact Info</h5>
+            <h5 className="text-lg font-bold text-[#771D1D] mb-6">Contact Info</h5>
             <ul className="space-y-3 text-gray-600">
               <li className="flex items-start">
-                <MapPin className="w-4 h-4 mr-3 mt-1 text-[#C41E3A]" />
+                <MapPin className="w-4 h-4 mr-3 mt-1 text-[#771D1D]" />
                 <span>Kigali, Rwanda</span>
               </li>
               <li className="flex items-center">
-                <Phone className="w-4 h-4 mr-3 text-[#C41E3A]" />
+                <Phone className="w-4 h-4 mr-3 text-[#771D1D]" />
                 <span>+250 788 889 700</span>
               </li>
               <li className="flex items-center">
-                <FaWhatsapp className="w-4 h-4 mr-3 text-[#C41E3A]" />
+                <FaWhatsapp className="w-4 h-4 mr-3 text-[#771D1D]" />
                 <span>+250 788 889 700</span>
               </li>
               <li className="flex items-center">
-                <span className="w-4 h-4 mr-3 text-[#C41E3A]">✉</span>
+                <span className="w-4 h-4 mr-3 text-[#771D1D]">✉</span>
                 <span>info@megishaestate.com</span>
               </li>
             </ul>

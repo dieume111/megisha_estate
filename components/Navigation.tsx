@@ -87,7 +87,7 @@ function Navigation({ currentPage }: NavigationProps) {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-lg border-b-2 border-[#C41E3A]' : 'bg-transparent'
+        isScrolled ? 'bg-white shadow-lg border-b-2 border-[#771D1D]' : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -95,12 +95,12 @@ function Navigation({ currentPage }: NavigationProps) {
           <a href="/">
             <motion.div className="flex items-center" whileHover={{ scale: 1.05 }}>
               <div className={`w-12 h-12 rounded-lg flex items-center justify-center mr-3 shadow-lg transition-colors ${
-                isScrolled ? 'bg-[#C41E3A]' : 'bg-white/90'
+                isScrolled ? 'bg-[#771D1D]' : 'bg-white/90'
               }`}>
-                <Building className={`w-7 h-7 ${isScrolled ? 'text-white' : 'text-[#C41E3A]'}`} />
+                <Building className={`w-7 h-7 ${isScrolled ? 'text-white' : 'text-[#771D1D]'}`} />
               </div>
               <h1 className={`text-2xl font-bold transition-colors ${
-                isScrolled ? 'text-[#C41E3A]' : 'text-white drop-shadow-lg'
+                isScrolled ? 'text-[#771D1D]' : 'text-white drop-shadow-lg'
               }`}>Megisha Estate</h1>
             </motion.div>
           </a>
@@ -109,10 +109,10 @@ function Navigation({ currentPage }: NavigationProps) {
             <div className="relative">
               <div className="hover-area" onMouseEnter={handleDropdownEnter} onMouseLeave={handleDropdownLeave}>
                 <motion.button whileHover={{ scale: 1.05 }} className={`flex items-center space-x-2 transition-all group ${
-                  isScrolled ? 'text-gray-700 hover:text-[#C41E3A]' : 'text-white hover:text-gray-200'
+                  isScrolled ? 'text-gray-700 hover:text-[#771D1D]' : 'text-white hover:text-gray-200'
                 }`}>
                   <div className={`w-9 h-9 rounded-full flex items-center justify-center shadow transition-all ${
-                    isScrolled ? 'bg-gray-100 group-hover:bg-[#C41E3A]' : 'bg-white/20 group-hover:bg-white/30'
+                    isScrolled ? 'bg-gray-100 group-hover:bg-[#771D1D]' : 'bg-white/20 group-hover:bg-white/30'
                   }`}>
                     <Home className={`w-5 h-5 ${isScrolled ? 'group-hover:text-white' : 'text-white'}`} />
                   </div>
@@ -135,7 +135,7 @@ function Navigation({ currentPage }: NavigationProps) {
                     { name: 'Commercial', href: '/properties/commercial', count: propertyCounts.commercial },
                     { name: 'Apartment', href: '/properties/appartment', count: propertyCounts.apartments }
                   ].map((item) => (
-                    <a key={item.name} href={item.href} className="block px-4 py-2 text-gray-700 hover:bg-[#FFF5F5] hover:text-[#C41E3A] transition-all">
+                    <a key={item.name} href={item.href} className="block px-4 py-2 text-gray-700 hover:bg-[#771D1D1A] hover:text-[#771D1D] transition-all">
                       <div className="flex items-center justify-between">
                         <span className="font-medium">{item.name}</span>
                         <span className="text-xs text-gray-500">({item.count})</span>
@@ -149,10 +149,10 @@ function Navigation({ currentPage }: NavigationProps) {
             <div className="relative">
               <div className="hover-area" onMouseEnter={handleSurveyingEnter} onMouseLeave={handleSurveyingLeave}>
                 <motion.button whileHover={{ scale: 1.05 }} className={`flex items-center space-x-2 transition-all group ${
-                  isScrolled ? 'text-gray-700 hover:text-[#C41E3A]' : 'text-white hover:text-gray-200'
+                  isScrolled ? 'text-gray-700 hover:text-[#771D1D]' : 'text-white hover:text-gray-200'
                 }`}>
                   <div className={`w-9 h-9 rounded-full flex items-center justify-center shadow transition-all ${
-                    isScrolled ? 'bg-gray-100 group-hover:bg-[#C41E3A]' : 'bg-white/20 group-hover:bg-white/30'
+                    isScrolled ? 'bg-gray-100 group-hover:bg-[#771D1D]' : 'bg-white/20 group-hover:bg-white/30'
                   }`}>
                     <Compass className={`w-5 h-5 ${isScrolled ? 'group-hover:text-white' : 'text-white'}`} />
                   </div>
@@ -174,7 +174,7 @@ function Navigation({ currentPage }: NavigationProps) {
                     { name: 'Topographic Surveying', href: '/surveying-services/topographic-surveying' },
                     { name: 'Construction Surveying', href: '/surveying-services/construction-surveying' }
                   ].map((item) => (
-                    <a key={item.name} href={item.href} className="block px-4 py-2 text-gray-700 hover:bg-[#FFF5F5] hover:text-[#C41E3A] transition-all">
+                    <a key={item.name} href={item.href} className="block px-4 py-2 text-gray-700 hover:bg-[#771D1D1A] hover:text-[#771D1D] transition-all">
                       <div className="font-medium">{item.name}</div>
                     </a>
                   ))}
@@ -183,10 +183,10 @@ function Navigation({ currentPage }: NavigationProps) {
             </div>
 
             <motion.a href="#" whileHover={{ scale: 1.05 }} className={`flex items-center space-x-2 transition-all group ${
-              isScrolled ? 'text-gray-700 hover:text-[#C41E3A]' : 'text-white hover:text-gray-200'
+              isScrolled ? 'text-gray-700 hover:text-[#771D1D]' : 'text-white hover:text-gray-200'
             }`}>
               <div className={`w-9 h-9 rounded-full flex items-center justify-center shadow transition-all ${
-                isScrolled ? 'bg-gray-100 group-hover:bg-[#C41E3A]' : 'bg-white/20 group-hover:bg-white/30'
+                isScrolled ? 'bg-gray-100 group-hover:bg-[#771D1D]' : 'bg-white/20 group-hover:bg-white/30'
               }`}>
                 <Ruler className={`w-5 h-5 ${isScrolled ? 'group-hover:text-white' : 'text-white'}`} />
               </div>
@@ -196,10 +196,10 @@ function Navigation({ currentPage }: NavigationProps) {
             <div className="relative">
               <div className="hover-area" onMouseEnter={handleMachineryEnter} onMouseLeave={handleMachineryLeave}>
                 <motion.button whileHover={{ scale: 1.05 }} className={`flex items-center space-x-2 transition-all group ${
-                  isScrolled ? 'text-gray-700 hover:text-[#C41E3A]' : 'text-white hover:text-gray-200'
+                  isScrolled ? 'text-gray-700 hover:text-[#771D1D]' : 'text-white hover:text-gray-200'
                 }`}>
                   <div className={`w-9 h-9 rounded-full flex items-center justify-center shadow transition-all ${
-                    isScrolled ? 'bg-gray-100 group-hover:bg-[#C41E3A]' : 'bg-white/20 group-hover:bg-white/30'
+                    isScrolled ? 'bg-gray-100 group-hover:bg-[#771D1D]' : 'bg-white/20 group-hover:bg-white/30'
                   }`}>
                     <Store className={`w-5 h-5 ${isScrolled ? 'group-hover:text-white' : 'text-white'}`} />
                   </div>
@@ -220,7 +220,7 @@ function Navigation({ currentPage }: NavigationProps) {
                     { name: 'Car Deals for sell', href: '/megisha-machinery-store/car-deals-for-sell' },
                     { name: 'Car Deals for rent', href: '/megisha-machinery-store/car-deals-for-rent' }
                   ].map((item) => (
-                    <a key={item.name} href={item.href} className="block px-4 py-2 text-gray-700 hover:bg-[#FFF5F5] hover:text-[#C41E3A] transition-all">
+                    <a key={item.name} href={item.href} className="block px-4 py-2 text-gray-700 hover:bg-[#771D1D1A] hover:text-[#771D1D] transition-all">
                       <div className="font-medium">{item.name}</div>
                     </a>
                   ))}
@@ -229,7 +229,7 @@ function Navigation({ currentPage }: NavigationProps) {
             </div>
           </div>
 
-          <button className={`lg:hidden ${isScrolled ? 'text-[#C41E3A]' : 'text-white'}`} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          <button className={`lg:hidden ${isScrolled ? 'text-[#771D1D]' : 'text-white'}`} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>

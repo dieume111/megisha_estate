@@ -533,7 +533,7 @@ export default function AdminPlotsPage() {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
                           plot.status === 'available' ? 'bg-green-100 text-green-800' :
-                          plot.status === 'sold' ? 'bg-red-100 text-red-800' :
+                          plot.status === 'sold' ? 'bg-[#771D1D]/10 text-[#771D1D]' :
                           'bg-yellow-100 text-yellow-800'
                         }`}>
                           {plot.status}
@@ -557,7 +557,7 @@ export default function AdminPlotsPage() {
                           </button>
                           <button
                             onClick={() => handleDelete(plot.id)}
-                            className="text-red-600 hover:text-red-900 p-1"
+                            className="text-[#771D1D] hover:text-[#771D1D] p-1"
                             title="Delete"
                           >
                             <Trash2 className="w-4 h-4" />

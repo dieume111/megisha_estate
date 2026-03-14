@@ -3,11 +3,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary-red: #C41E3A;
-  --primary-red-dark: #8B0000;
-  --primary-red-light: #DC143C;
-  --accent-red: #E63946;
-  --bg-light: #FFF5F5;
+  --primary-red: #771D1D;
+  --primary-red-dark: #771D1D;
+  --primary-red-light: #771D1D;
+  --accent-red: #771D1D;
+  --bg-light: #771D1D1A;
 }
 
 @theme inline {

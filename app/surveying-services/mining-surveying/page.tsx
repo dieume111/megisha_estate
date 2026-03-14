@@ -77,7 +77,7 @@ export default function MiningSurveyingPage() {
           >
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
               Mining
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#C41E3A] to-[#DC143C]">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#771D1D] to-[#771D1D]">
                 Surveying
               </span>
             </h1>
@@ -116,7 +116,7 @@ export default function MiningSurveyingPage() {
                 viewport={{ once: true }}
                 className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all duration-500"
               >
-                <div className="w-16 h-16 bg-[#C41E3A] rounded-xl flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-[#771D1D] rounded-xl flex items-center justify-center mb-6">
                   <service.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
@@ -124,7 +124,7 @@ export default function MiningSurveyingPage() {
                 <ul className="space-y-2">
                   {service.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center text-sm text-gray-600">
-                      <div className="w-2 h-2 bg-[#C41E3A] rounded-full mr-2"></div>
+                      <div className="w-2 h-2 bg-[#771D1D] rounded-full mr-2"></div>
                       {feature}
                     </li>
                   ))}
@@ -163,17 +163,17 @@ export default function MiningSurveyingPage() {
                 viewport={{ once: true }}
                 className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500"
               >
-                <div className="h-48 bg-[#C41E3A] flex items-center justify-center">
+                <div className="h-48 bg-[#771D1D] flex items-center justify-center">
                   <Mountain className="w-16 h-16 text-white" />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{project.name}</h3>
                   <div className="flex items-center text-gray-600 mb-2">
-                    <MapPin className="w-4 h-4 mr-2 text-[#C41E3A]" />
+                    <MapPin className="w-4 h-4 mr-2 text-[#771D1D]" />
                     <span>{project.location}</span>
                   </div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="bg-[#FFF5F5] text-[#C41E3A] px-2 py-1 rounded-lg text-sm font-medium">
+                    <span className="bg-[#771D1D1A] text-[#771D1D] px-2 py-1 rounded-lg text-sm font-medium">
                       {project.type}
                     </span>
                     <span className={`px-2 py-1 rounded-lg text-sm font-medium ${
@@ -203,7 +203,7 @@ export default function MiningSurveyingPage() {
               viewport={{ once: true }}
               className="text-center"
             >
-              <div className="w-16 h-16 bg-[#C41E3A] rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-[#771D1D] rounded-full flex items-center justify-center mx-auto mb-4">
                 <Award className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Expert Team</h3>
@@ -217,7 +217,7 @@ export default function MiningSurveyingPage() {
               viewport={{ once: true }}
               className="text-center"
             >
-              <div className="w-16 h-16 bg-[#C41E3A] rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-[#771D1D] rounded-full flex items-center justify-center mx-auto mb-4">
                 <Clock className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Timely Delivery</h3>
@@ -231,7 +231,7 @@ export default function MiningSurveyingPage() {
               viewport={{ once: true }}
               className="text-center"
             >
-              <div className="w-16 h-16 bg-[#C41E3A] rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-[#771D1D] rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Safety First</h3>

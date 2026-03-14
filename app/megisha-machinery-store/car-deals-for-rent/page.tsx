@@ -190,7 +190,7 @@ export default function CarDealsForRentPage() {
                   <div className={`absolute top-4 right-4 px-3 py-1 rounded-lg text-sm font-medium ${
                     car.available 
                       ? 'bg-green-600 text-white' 
-                      : 'bg-red-600 text-white'
+                      : 'bg-[#771D1D] text-white'
                   }`}>
                     {car.available ? 'Available' : 'Booked'}
                   </div>

@@ -362,7 +362,7 @@ export default function AdminDashboard() {
               
               <button className="relative p-2 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                 <Bell className="w-5 h-5 text-gray-600" />
-                <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                <span className="absolute top-1 right-1 w-2 h-2 bg-[#771D1D] rounded-full"></span>
               </button>
               
               <button className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all">
@@ -427,7 +427,7 @@ export default function AdminDashboard() {
             >
               <MessageSquare className="w-5 h-5 text-gray-500" />
               <span>Inquiries</span>
-              <span className="ml-auto bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full">23</span>
+              <span className="ml-auto bg-[#771D1D]/10 text-[#771D1D] text-xs px-2 py-1 rounded-full">23</span>
             </a>
             
             <a
@@ -514,7 +514,7 @@ export default function AdminDashboard() {
             
             <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
               <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-600 rounded-lg flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-[#771D1D] rounded-lg flex items-center justify-center">
                   <MessageSquare className="w-6 h-6 text-white" />
                 </div>
                 <span className="text-sm text-green-600 font-medium">+5</span>
@@ -604,7 +604,7 @@ export default function AdminDashboard() {
                   <Upload className="w-4 h-4" />
                   <span>Import Data</span>
                 </button>
-                <button className="flex items-center justify-center space-x-2 px-4 py-3 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-lg hover:from-orange-600 hover:to-red-700 transition-all">
+                <button className="flex items-center justify-center space-x-2 px-4 py-3 bg-gradient-to-r from-orange-500 to-[#771D1D] text-white rounded-lg hover:from-orange-600 hover:to-[#771D1D] transition-all">
                   <FileText className="w-4 h-4" />
                   <span>Generate Report</span>
                 </button>

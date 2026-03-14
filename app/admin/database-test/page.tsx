@@ -54,12 +54,12 @@ export default function DatabaseTestPage() {
     return status ? (
       <CheckCircle className="w-5 h-5 text-green-500" />
     ) : (
-      <XCircle className="w-5 h-5 text-red-500" />
+      <XCircle className="w-5 h-5 text-[#771D1D]" />
     );
   };
 
   const getStatusColor = (status: boolean) => {
-    return status ? 'text-green-600 bg-green-50' : 'text-red-600 bg-red-50';
+    return status ? 'text-green-600 bg-green-50' : 'text-[#771D1D] bg-[#771D1D]/5';
   };
 
   return (
@@ -96,7 +96,7 @@ export default function DatabaseTestPage() {
               {/* Overall Status */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className={`p-6 rounded-lg border-2 ${
-                  testResult.database ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'
+                  testResult.database ? 'border-green-200 bg-green-50' : 'border-[#771D1D]/20 bg-[#771D1D]/5'
                 }`}>
                   <div className="flex items-center space-x-3">
                     {getStatusIcon(testResult.database)}
@@ -155,13 +155,13 @@ export default function DatabaseTestPage() {
               {testResult.errors.length > 0 && (
                 <div>
                   <h3 className="text-lg font-semibold mb-4 flex items-center">
-                    <AlertCircle className="w-5 h-5 mr-2 text-red-500" />
+                    <AlertCircle className="w-5 h-5 mr-2 text-[#771D1D]" />
                     Errors Found
                   </h3>
                   <div className="space-y-2">
                     {testResult.errors.map((error, index) => (
-                      <div key={index} className="p-3 bg-red-50 border border-red-200 rounded-lg">
-                        <p className="text-sm text-red-700">{error}</p>
+                      <div key={index} className="p-3 bg-[#771D1D]/5 border border-[#771D1D]/20 rounded-lg">
+                        <p className="text-sm text-[#771D1D]">{error}</p>
                       </div>
                     ))}
                   </div>

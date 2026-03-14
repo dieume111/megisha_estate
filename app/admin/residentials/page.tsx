@@ -523,7 +523,7 @@ export default function AdminResidentialsPage() {
                         <button
                           type="button"
                           onClick={() => handleAmenityChange(index, '')}
-                          className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+                          className="px-4 py-2 bg-[#771D1D] text-white rounded-lg hover:bg-[#771D1D] transition-colors"
                         >
                           Remove
                         </button>
@@ -639,7 +639,7 @@ export default function AdminResidentialsPage() {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
                           residential.status === 'available' ? 'bg-green-100 text-green-800' :
-                          residential.status === 'sold' ? 'bg-red-100 text-red-800' :
+                          residential.status === 'sold' ? 'bg-[#771D1D]/10 text-[#771D1D]' :
                           'bg-yellow-100 text-yellow-800'
                         }`}>
                           {residential.status}
@@ -663,7 +663,7 @@ export default function AdminResidentialsPage() {
                           </button>
                           <button
                             onClick={() => handleDelete(residential.id)}
-                            className="text-red-600 hover:text-red-900 p-1"
+                            className="text-[#771D1D] hover:text-[#771D1D] p-1"
                             title="Delete"
                           >
                             <Trash2 className="w-4 h-4" />
